@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Dict
 
@@ -40,14 +40,3 @@ async def retrieve_data(id: int):
     if id not in database:
         raise HTTPException(status_code=404, detail="Data not found")
     return database[id]
-
-# Initialize the FastAPI app
-app = FastAPI()
-
-# Include the router in the app
-app.include_router(router)
-
-# Add a simple root endpoint
-@app.get("/")
-async def read_root():
-    return {"message": "Welcome to the Secure Healthcare Data API"}

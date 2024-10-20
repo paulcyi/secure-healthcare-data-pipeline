@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from app.auth import auth as auth_router  # Import your authentication router
+from app.routers.data import router as data_router  # Import your data router
 
 app = FastAPI(
     title="Secure Healthcare Data Pipeline API",
@@ -10,5 +12,9 @@ app = FastAPI(
 async def read_root():
     return {"message": "Welcome to the Secure Healthcare Data Pipeline API"}
 
-# Include Routers (to be implemented in Step 2)
+# Include the authentication router
+app.include_router(auth_router.router, prefix="/auth", tags=["Authentication"])
+
+# Include the data router
+app.include_router(data_router, prefix="/data", tags=["Data"])
 
