@@ -1,6 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Dict
+from app.auth.auth import get_current_user  # Import the authentication function to protect the route
 
 # Initialize the FastAPI router
 router = APIRouter()
@@ -40,3 +41,9 @@ async def retrieve_data(id: int):
     if id not in database:
         raise HTTPException(status_code=404, detail="Data not found")
     return database[id]
+
+# Protected GET /data/protected-endpoint route
+@router.get("/protected-endpoint")
+async def protected_endpoint(current_user: str = Depends(get_current_user)):
+    return {"message": "This is a protected endpoint", "user": current_user}
+
