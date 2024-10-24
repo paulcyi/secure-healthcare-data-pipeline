@@ -11,7 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -25,12 +24,32 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest pytest-cov
 
-    - name: Run tests
+    - name: Run tests with coverage
       run: |
-        echo "No tests defined yet"
+        pytest --cov=./ --cov-report=xml
+      continue-on-error: true  # Allow the workflow to continue even if tests fail for now
 
-    - name: Build Docker image
-      run: |
-        docker build -t secure-healthcare-data-pipeline .
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        files: ./coverage.xml
+        flags: unittests
+        fail_ci_if_error: false
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: |
+          paulcyi/secure-healthcare-data-pipeline:latest
+          paulcyi/secure-healthcare-data-pipeline:${{ github.sha }}
 
