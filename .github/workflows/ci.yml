@@ -29,7 +29,12 @@ jobs:
     - name: Run tests with coverage
       run: |
         pytest --cov=./ --cov-report=xml
-      continue-on-error: true  # Allow the workflow to continue even if tests fail for now
+      continue-on-error: true
+
+    # Add this new step here
+    - name: Post-test status
+      run: |
+        echo "Tests completed. Moving to Docker build steps..."
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
