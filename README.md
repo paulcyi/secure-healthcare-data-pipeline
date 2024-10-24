@@ -1,4 +1,10 @@
-# FastAPI DevOps Project
+# Secure Healthcare Data Pipeline with FastAPI
+
+[![Build Status](https://github.com/paulcyi/secure-healthcare-data-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/paulcyi/secure-healthcare-data-pipeline/actions)
+[![Docker Pulls](https://img.shields.io/docker/pulls/paulyi1/secure-healthcare-data-pipeline)](https://hub.docker.com/r/paulyi1/secure-healthcare-data-pipeline)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.68+-green.svg)](https://fastapi.tiangolo.com)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 This project demonstrates my proficiency in building, securing, containerizing, and deploying a modern web application using FastAPI. The goal is to showcase the end-to-end workflow of a DevOps Engineer, from application development to CI/CD pipeline implementation and cloud deployment. 
 
