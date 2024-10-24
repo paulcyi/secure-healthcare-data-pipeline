@@ -55,6 +55,6 @@ jobs:
         context: .
         push: true
         tags: |
-          paulcyi/secure-healthcare-data-pipeline:latest
-          paulcyi/secure-healthcare-data-pipeline:${{ github.sha }}
+          paulyi1/secure-healthcare-data-pipeline:latest
+          paulyi1/secure-healthcare-data-pipeline:${{ github.sha }}
 
