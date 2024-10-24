@@ -8,6 +8,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install uvicorn separately to ensure it's installed
+RUN pip install uvicorn
+
 # Copy the rest of the application code to the working directory
 COPY . .
 
@@ -24,5 +27,9 @@ COPY --from=build-stage /app /app
 # Expose the port FastAPI will run on
 EXPOSE 8000
 
-# Explicitly use the path to uvicorn in the CMD
-CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run the FastAPI app using uvicorn
+CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+
+
+
