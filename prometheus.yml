@@ -1,9 +1,9 @@
 global:
-  scrape_interval: 15s  # How often to scrape metrics
+  scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'fastapi-app'
-    metrics_path: /metrics  # Prometheus scrapes the /metrics endpoint
+  - job_name: 'healthcare-pipeline'
     static_configs:
-      - targets: ['app:8000']  # 'app' refers to your FastAPI service
+      - targets: ['app:8000']
+    metrics_path: '/metrics'
 
