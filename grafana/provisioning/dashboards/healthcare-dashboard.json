@@ -1,0 +1,123 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Healthcare Pipeline Dashboard",
+    "panels": [
+      {
+        "title": "System Health Score",
+        "type": "gauge",
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "sum(rate(api_requests_total{status=\"200\"}[5m])) / sum(rate(api_requests_total[5m])) * 100",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "minValue": 0,
+          "maxValue": 100,
+          "thresholds": [
+            {
+              "value": 95,
+              "color": "green"
+            },
+            {
+              "value": 85,
+              "color": "yellow"
+            },
+            {
+              "value": 0,
+              "color": "red"
+            }
+          ]
+        }
+      },
+      {
+        "title": "API Response Times",
+        "type": "graph",
+        "gridPos": {
+          "h": 8,
+          "w": 16,
+          "x": 8,
+          "y": 0
+        },
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(api_request_latency_seconds_sum[5m]) / rate(api_request_latency_seconds_count[5m])",
+            "legendFormat": "{{endpoint}}",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "title": "Authentication Metrics",
+        "type": "graph",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "sum(rate(api_requests_total{endpoint=~\"/auth/.*\"}[5m])) by (status)",
+            "legendFormat": "{{status}}",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "title": "Active Users",
+        "type": "stat",
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "api_active_users",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "title": "Patient Records Stats",
+        "type": "table",
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "total_patients",
+            "refId": "A"
+          },
+          {
+            "expr": "total_metrics_recorded",
+            "refId": "B"
+          }
+        ]
+      }
+    ],
+    "refresh": "5s",
+    "schemaVersion": 27,
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    }
+  }
+}
