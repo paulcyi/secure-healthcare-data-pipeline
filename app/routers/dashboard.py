@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
 
 router = APIRouter()
 
@@ -11,14 +10,37 @@ async def get_dashboard():
     <html>
         <head>
             <title>Healthcare Pipeline Dashboard</title>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+            <!-- Load React first -->
+            <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+            <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+            
+            <!-- Load Dependencies for Recharts -->
+            <script src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js"></script>
+            
+            <!-- Load Recharts -->
+            <script src="https://unpkg.com/recharts@2.1.12/umd/Recharts.js"></script>
+            
+            <!-- Load Tailwind -->
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script>
+                tailwind.config = {
+                    darkMode: 'class',
+                    theme: {
+                        extend: {}
+                    }
+                }
+            </script>
+            
+            <!-- Load Babel -->
+            <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+            
+            <style>
+                #root { min-height: 100vh; width: 100%; }
+            </style>
         </head>
         <body>
             <div id="root"></div>
-            <script type="module" src="/static/dashboard.js"></script>
+            <script type="text/babel" src="/static/dashboard.js"></script>
         </body>
     </html>
     """

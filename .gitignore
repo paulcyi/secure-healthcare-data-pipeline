@@ -163,4 +163,8 @@ venv/
 # docker-compose.yml
 *.env
 
+# Project-specific files
+repopack-output.txt
+
+
 
