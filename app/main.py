@@ -2,8 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 from prometheus_fastapi_instrumentator import Instrumentator
+from fastapi.staticfiles import StaticFiles
 from app.auth.auth import router as auth_router
 from app.routers.data import router as data_router
+from app.routers import dashboard
 
 # Loguru configuration
 logger.add("logs.log", rotation="500 MB")
@@ -25,6 +27,10 @@ app.add_middleware(
 
 # Add Prometheus instrumentation
 Instrumentator().instrument(app).expose(app)
+
+# Add dashboard router and static files
+app.include_router(dashboard.router, tags=["Dashboard"])
+app.mount("/static", StaticFiles(directory="app/frontend/static"), name="static")
 
 # Root endpoint
 @app.get("/")
