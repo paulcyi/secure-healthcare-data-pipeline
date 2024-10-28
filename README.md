@@ -159,7 +159,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📬 Contact
 
-Paul Yi - [LinkedIn](Your LinkedIn) - [GitHub](Your GitHub)
+Paul Yi - [LinkedIn](https://www.linkedin.com/in/paulcyi) - [GitHub](https://github.com/paulcyi)
 
 Project Link: [https://github.com/paulcyi/secure-healthcare-data-pipeline](https://github.com/paulcyi/secure-healthcare-data-pipeline)
 
