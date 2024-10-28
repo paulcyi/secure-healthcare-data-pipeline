@@ -1,4 +1,4 @@
-# Secure Healthcare Data Pipeline with FastAPI
+# Secure Healthcare Data Pipeline
 
 [![Build Status](https://github.com/paulcyi/secure-healthcare-data-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/paulcyi/secure-healthcare-data-pipeline/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/paulyi1/secure-healthcare-data-pipeline)](https://hub.docker.com/r/paulyi1/secure-healthcare-data-pipeline)
@@ -6,58 +6,162 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.68+-green.svg)](https://fastapi.tiangolo.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This project demonstrates my proficiency in building, securing, containerizing, and deploying a modern web application using FastAPI. The goal is to showcase the end-to-end workflow of a DevOps Engineer, from application development to CI/CD pipeline implementation and cloud deployment. 
+A production-grade healthcare data pipeline demonstrating modern DevOps practices, security implementations, and cloud-native architecture. Built with FastAPI and designed for HIPAA compliance, this project showcases real-world enterprise development and deployment patterns.
 
-## Project Overview
+## 🎯 Project Overview
 
-The application is a simple FastAPI service that includes JWT-based authentication for securing API endpoints. This project is designed with scalability, security, and automated deployment in mind, using industry-standard DevOps practices.
+This project implements a secure, scalable healthcare data processing pipeline with features essential for production deployment:
 
-## Key Features & Technologies
+- **Secure API Gateway**: JWT-based authentication with role-based access control
+- **Real-time Monitoring**: Custom healthcare metrics and performance tracking
+- **Container Orchestration**: Production-ready Docker deployment
+- **Automated DevOps Pipeline**: Continuous integration and deployment with GitHub Actions
+- **Cloud Infrastructure**: AWS deployment with security best practices
 
-### 1. **FastAPI & JWT Authentication**
-   - Developed a FastAPI application that serves API endpoints.
-   - Secured endpoints using **JWT Authentication**, ensuring only authorized users can access protected resources.
-   - Implemented authentication in Python using FastAPI's built-in support for OAuth2 and JWT tokens.
+## 🚀 Key Features
 
-### 2. **Containerization with Docker**
-   - Wrote a **multi-stage Dockerfile** to optimize both the build and runtime environments.
-   - The application runs in an isolated Docker container, ensuring a consistent and portable deployment across different environments.
-   - Successfully ran the FastAPI app inside Docker and exposed it via `uvicorn`.
+### Security & Compliance
+- **Authentication & Authorization**
+  - JWT-based authentication system
+  - Protected API endpoints with role-based access
+  - Secure password hashing and token management
+  
+- **Data Protection**
+  - HIPAA compliance considerations
+  - Secure data handling patterns
+  - Audit logging for compliance tracking
 
-### 3. **CI/CD Pipeline with GitHub Actions**
-   - Implemented an automated CI/CD pipeline using **GitHub Actions** to ensure that every code commit triggers a series of actions:
-     - Build the Docker container.
-     - Run tests (to be implemented next).
-     - Deploy the application seamlessly.
+### Infrastructure & Deployment
+- **Containerization**
+  - Multi-stage Docker builds for optimization
+  - Docker Compose for local development
+  - Container security best practices
+  
+- **CI/CD Pipeline**
+  - Automated testing and validation
+  - Docker image builds and registry pushes
+  - Deployment automation with GitHub Actions
 
-### 4. **Logging and Monitoring**
-   - **Prometheus** is used to gather application metrics, which are visualized through **Grafana**, ensuring proactive monitoring and observability of the application's performance.
-   - Added **custom logging** to monitor application behavior, making debugging and troubleshooting easier in production environments (next step in the project).
+### Monitoring & Observability
+- **Metrics Collection**
+  - Prometheus integration for metrics
+  - Custom healthcare-specific metrics
+  - Performance and security monitoring
+  
+- **Visualization**
+  - Real-time Grafana dashboards
+  - System health monitoring
+  - Authentication tracking
 
-### 5. **Cloud Deployment on AWS**
-   - Planned deployment on an **AWS EC2 instance**, where the application will run in a scalable cloud environment. This step will demonstrate the ability to manage infrastructure as code and deploy to cloud environments (coming soon).
+## 🛠️ Technology Stack
 
-### 6. **Security Best Practices**
-   - JWT authentication ensures only verified users can access sensitive data.
-   - Docker and AWS security groups are configured to minimize attack vectors and provide secure, scalable architecture.
+- **Backend**: FastAPI, Python 3.11
+- **Authentication**: JWT, OAuth2
+- **Containerization**: Docker, Docker Compose
+- **CI/CD**: GitHub Actions
+- **Monitoring**: Prometheus, Grafana
+- **Cloud**: AWS EC2
+- **Frontend**: React (Dashboard)
 
-## DevOps Skills Highlighted
-This project demonstrates my expertise in:
-- **Application Development**: Building secure, scalable APIs using FastAPI and Python.
-- **Containerization**: Creating and optimizing Docker containers for consistent application deployment.
-- **Automation & CI/CD**: Leveraging GitHub Actions for continuous integration and deployment.
-- **Infrastructure Management**: Deploying applications to AWS and ensuring secure, scalable cloud architecture.
-- **Monitoring & Logging**: Implementing Prometheus and Grafana for real-time application performance monitoring.
-- **Security**: Utilizing JWT authentication and Docker security practices to protect and maintain secure environments.
+## 📊 Project Status
 
-## Project Milestones
-- ✅ Completed JWT Authentication and protected endpoints.
-- ✅ Successfully containerized the FastAPI app with Docker.
-- ✅ Integrated CI/CD pipeline with GitHub Actions for automated testing and deployment.
-- ⏳ Adding automated tests to improve application reliability.
-- ⏳ Implementing logging, monitoring, and Prometheus/Grafana setup.
-- ⏳ AWS EC2 deployment with scalability and security measures.
+### Completed Features ✅
+- JWT Authentication implementation
+- Docker containerization with multi-stage builds
+- CI/CD pipeline with GitHub Actions
+- Basic API endpoints for healthcare data
+- AWS EC2 deployment setup
+- Prometheus metrics integration
+- Initial Grafana dashboard configuration
 
-## Conclusion
-This project demonstrates my technical capabilities in DevOps, showcasing an end-to-end approach from application development to automated cloud deployment. Through this project, I have implemented best practices in containerization, CI/CD pipelines, cloud infrastructure, and application security. 
+### In Progress 🔄
+- Enhanced Grafana dashboards
+- Real-time monitoring improvements
+- Advanced security implementations
+- Comprehensive testing suite
 
+### Upcoming Features 🎯
+- Infrastructure as Code with Terraform
+- Kubernetes deployment
+- HashiCorp Vault integration
+- Advanced HIPAA compliance features
+- ELK Stack for logging
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.11+
+- Docker and Docker Compose
+- AWS CLI (for deployment)
+
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/paulcyi/secure-healthcare-data-pipeline.git
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run with Docker Compose
+docker-compose up -d
+
+# Access the API documentation
+open http://localhost:8000/docs
+```
+
+### Monitoring Setup
+```bash
+# Access Grafana
+open http://localhost:3000
+
+# Default credentials
+Username: admin
+Password: admin
+```
+
+## 🔒 Security
+
+This project implements multiple security layers:
+
+1. **Authentication**
+   - JWT token-based authentication
+   - Secure password hashing
+   - Token expiration and refresh
+
+2. **Authorization**
+   - Role-based access control
+   - Protected API endpoints
+   - Audit logging
+
+3. **Infrastructure**
+   - Secure Docker configuration
+   - AWS security groups
+   - HTTPS/SSL implementation
+
+## 📖 Documentation
+
+- [API Documentation](http://localhost:8000/docs)
+- [Deployment Guide](./docs/deployment.md)
+- [Security Overview](./docs/security.md)
+- [Monitoring Setup](./docs/monitoring.md)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📬 Contact
+
+Paul Yi - [LinkedIn](Your LinkedIn) - [GitHub](Your GitHub)
+
+Project Link: [https://github.com/paulcyi/secure-healthcare-data-pipeline](https://github.com/paulcyi/secure-healthcare-data-pipeline)
+
+---
+*This project is part of a DevOps portfolio demonstrating enterprise-level implementation of modern development practices.*
